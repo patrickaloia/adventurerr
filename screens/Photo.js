@@ -13,11 +13,14 @@ export default class Photo extends React.Component {
   };
   _mounted = false;
 
+
   componentDidMount() {
+    console.log(this.state.image)
     this._mounted = true;
   }
 
   componentWillUnmount() {
+    console.log(this.state.image)
     this._mounted = false;
   }
 

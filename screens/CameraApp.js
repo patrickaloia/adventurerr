@@ -1,4 +1,4 @@
-import { Constants, Camera, FileSystem, Permissions, BarCodeScanner } from 'expo';
+import { Constants, Camera, FileSystem, Permissions, BarCodeScanner, FaceDetector } from 'expo';
 import React from 'react';
 import {
   Alert,
@@ -174,7 +174,22 @@ export default class CameraScreen extends React.Component {
   }
 
   renderFace({ bounds, faceID, rollAngle, yawAngle }) {
-    return (
+    function getRandomInt() {
+      return Math.floor(Math.random() * Math.floor(18));
+    }
+    let faceIDStorage = []
+    if (!faceIDStorage.includes(obj[faceID])) {
+      obj = {
+        faceID: faceID,
+        str: `STR: ${getRandomInt()}`,
+        dex: `DEX: ${getRandomInt()}`,
+        con: `CON: ${getRandomInt()}`,
+
+
+
+      }
+      faceIDStorage.push(faceID)
+    } return (
       <View
         key={faceID}
         transform={[
@@ -191,8 +206,17 @@ export default class CameraScreen extends React.Component {
           },
         ]}>
         <Text style={styles.faceText}>ID: {faceID}</Text>
-        <Text style={styles.faceText}>rollAngle: {rollAngle.toFixed(0)}</Text>
-        <Text style={styles.faceText}>yawAngle: {yawAngle.toFixed(0)}</Text>
+        <Text style={styles.faceText}>Str: {getRandomInt()}</Text>
+        <Text style={styles.faceText}>Dex: {getRandomInt()}</Text>
+        <Text style={styles.faceText}>Con: {getRandomInt()}</Text>
+        <Text style={styles.faceText}>Int: {getRandomInt()}</Text>
+        <Text style={styles.faceText}>Wis: {getRandomInt()}</Text>
+        <Text style={styles.faceText}>Cha: {getRandomInt()}</Text>
+
+
+        {/* <Text style={styles.faceText}>cool guy meter: {rollAngle.toFixed(0)}</Text>
+        <Text style={styles.faceText}>yawAngle: {yawAngle.toFixed(0)}</Text> */}
+
       </View>
     );
   }
