@@ -7,6 +7,8 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 // import SettingsScreen from '../screens/SettingsScreen';
 import CameraApp from '../screens/CameraApp';
+import SnapShot from '../screens/SnapShot';
+
 
 
 const HomeStack = createStackNavigator({
@@ -69,9 +71,24 @@ CameraStack.navigationOptions = {
   ),
 };
 
+const KairosStack = createStackNavigator({
+  SnapShot: SnapShot,
+});
+
+KairosStack.navigationOptions = {
+  tabBarLabel: 'Kairos Test',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-camera' : 'md-camera'}
+    />
+  ),
+};
+
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
+  KairosStack,
   // SettingsStack,
   CameraStack
 });
