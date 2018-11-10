@@ -1,4 +1,4 @@
-const Party = require('./user');
+const Party = require('./party');
 
 // Exercise.belongsToMany(User, { through: UserExercise });
 // User.belongsToMany(Exercise, { through: UserExercise });

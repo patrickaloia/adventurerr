@@ -1,9 +1,9 @@
 const db = require('./server/db/db');
 const { green, red } = require('chalk');
 // const User = require('./db/models/user');
-const { User, Exercise, UserExercise } = require('./server/db/models');
+const { Party } = require('./server/db/models');
 // const UserExercise = require('./db/models/userExercise');
-const party = [
+const partyMembers = [
   {
     firstName: 'dave',
     lastName: 'dave2',
@@ -25,10 +25,8 @@ const party = [
 const seed = async () => {
   // console.log(db);
   await db.sync({ force: true });
-
-  await Party.bulkCreate(users);
   // await Exercise.bulkCreate(exercises);
-  await Promise.all(party.map(partyMember => Party.create(partyMember)));
+  await Promise.all(partyMembers.map(partyMember => Party.create(partyMember)));
 
   console.log(green('Seeding success!'));
   await db.close();

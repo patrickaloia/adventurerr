@@ -1,12 +1,12 @@
 
-const { User } = require('../db/models');
+const { Party } = require('../db/models');
 const router = require('express').Router();
 module.exports = router;
 
 router.get('/', async (req, res, next) => {
   try {
-    const user = await User.findAll();
-    res.json(user);
+    const party = await Party.findAll();
+    res.json(party);
   } catch (err) {
     console.log(err);
   }
