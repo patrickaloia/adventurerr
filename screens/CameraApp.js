@@ -132,6 +132,7 @@ export default class CameraScreen extends React.Component {
       from: photo.uri,
       to: `${FileSystem.documentDirectory}photos/${Date.now()}.jpg`,
     });
+    console.log(photo)
     this.setState({ newPhotos: true });
   }
 
@@ -198,8 +199,11 @@ export default class CameraScreen extends React.Component {
             left: bounds.origin.x,
             top: bounds.origin.y,
           },
+          //maybe refactor the below so that it's
+          //a bit flashier? less trying to roll stats?
+          //more ADVENUTER DETECTED FLAHS FLASH
         ]}>
-        <Text style={styles.faceText}>ID: {faceID}</Text>
+        <Text style={styles.faceText}>ADVENTURER DETECTED</Text>
         <Text style={styles.faceText}>Str: {getStat()}</Text>
         <Text style={styles.faceText}>Dex: {getStat()}</Text>
         <Text style={styles.faceText}>Con: {getStat()}</Text>

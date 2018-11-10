@@ -5,6 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 const pictureSize = 150;
 
+const imageInfo = []
+
 export default class Photo extends React.Component {
   state = {
     selected: false,
@@ -31,7 +33,33 @@ export default class Photo extends React.Component {
     );
   }
 
-  detectFace = () =>
+  generateStats = () =>
+    //one If function that says
+    //'If this part of the image id string exists
+    //Then do not run this and throw an error that says
+    //'You already got stats for this guy
+
+    //else, generate stats and drop that in a db
+    //LOOK UP: React-Redux react-native? or do i just do it on
+    //the component? i don't mind making that call
+    //but yeah i'd prefer not to lol
+
+    //Create another component though that passes
+    //Everything in the database and we show the stats
+    //With the pictures next to it?
+
+    //Let's definitely juice up the
+    //component display though for REAL
+
+    //SO: 1. Look up what kind of db connections
+    //we can make with REact Native (ask the group?)
+    //1a. Read about FileSystem on expo, which
+    //seems to fucntion as a db(?)
+    //2. Set that up, figure out how to grab that
+    //hash number
+    //3. Built that component so it works
+    //4. Make it look pretty AND do something else?
+    // ^ this will depend on the time we have
     FaceDetector.detectFacesAsync(this.props.uri, {
       detectLandmarks: FaceDetector.Constants.Landmarks.none,
       runClassifications: FaceDetector.Constants.Classifications.all,
@@ -44,6 +72,31 @@ export default class Photo extends React.Component {
       faces,
       image,
     });
+
+    console.log('photos state?', this.props.photos)
+    console.log('image', this.state.image)
+    console.log('uri', this.props.uri)
+
+    function getStat() {
+      return Math.floor(Math.random() * Math.floor(18));
+    }
+    console.log({
+      Str: `Str: ${getStat()}`,
+      Dex: `Dex: ${getStat()}`,
+      Con: `Con: ${getStat()}`,
+      Int: `Int: ${getStat()}`,
+      Wis: `Wis: ${getStat()}`,
+      Cha: `Cha: ${getStat()}`,
+    })
+  }
+
+  detectFace = () => {
+    FaceDetector.detectFacesAsync(this.props.uri, {
+      detectLandmarks: FaceDetector.Constants.Landmarks.none,
+      runClassifications: FaceDetector.Constants.Classifications.all,
+    })
+      .then(this.facesDetected)
+      .catch(this.handleFaceDetectionError);
   }
 
   getImageDimensions = ({ width, height }) => {

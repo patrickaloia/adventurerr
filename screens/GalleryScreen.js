@@ -17,6 +17,7 @@ export default class GalleryScreen extends React.Component {
   componentDidMount = async () => {
     const photos = await FileSystem.readDirectoryAsync(PHOTOS_DIR);
     this.setState({ photos });
+    // console.log(this.state.photos)
   };
 
   toggleSelection = (uri, isSelected) => {
@@ -52,6 +53,7 @@ export default class GalleryScreen extends React.Component {
 
   renderPhoto = fileName =>
     <Photo
+      photos={this.state.photos}
       key={fileName}
       uri={`${PHOTOS_DIR}/${fileName}`}
       onSelectionToggle={this.toggleSelection}
