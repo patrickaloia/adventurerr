@@ -17,7 +17,9 @@ export default class Photo extends React.Component {
 
 
   componentDidMount() {
+    imageInfo.push('hello')
     console.log(this.state.image)
+    console.log(imageInfo)
     this._mounted = true;
   }
 
