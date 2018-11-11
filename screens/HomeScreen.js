@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import axios from 'axios'
 
 import { MonoText } from '../components/StyledText';
 
@@ -16,6 +17,12 @@ export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
+  async componentDidMount() {
+    const party = await axios.get('https://adventurerr-server-real.herokuapp.com/api/party')
+    const partyData = party.data
+    console.log(partyData)
+  }
 
   render() {
     return (

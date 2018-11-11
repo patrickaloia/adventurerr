@@ -1,0 +1,3 @@
+[submodule "adventurerr-server-REAL"]
+	path = adventurerr-server-REAL
+	url = https://github.com/patrickaloia/adventurerr-server-REAL.git
